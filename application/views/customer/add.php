@@ -5,7 +5,7 @@
 
 	echo validation_errors();
 	echo form_open('customer/insert');
-	$firstName = array(
+	$FirstName = array(
 		'name' => 'FirstName',
 		'id' => 'FirstName',
 		'value' => set_value('FirstName','')

@@ -57,9 +57,17 @@ class Customer extends CI_Controller {
 			$this->load->view('customer/add'); //removed data
 		}else{//insert data
 			$this->load->model('Customers_model');
-			$this->Customers_model->insert();
+
+			#insert data and return id of entered item
+			$id = $this->Customers_model->insert();
 			
-			echo "in controller";
+			#use the id # to load the view of the new customer
+			$data['query'] = $this->Customers_model->get_customers($id);
+
+			#using custom feedback fcn to inform user
+			feedback('Customer successfully added!', 'success');
+
+			$this->load->view('customer/view', $data);
 
 		}
 
